@@ -154,7 +154,7 @@ class ZYThumbnailTableViewController: UIViewController, UITableViewDataSource, U
     }
     
     func registerNotification() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "dismissPreview", name: NOTIFY_NAME_DISMISS_PREVIEW, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dismissPreview), name: NOTIFY_NAME_DISMISS_PREVIEW, object: nil)
     }
     
     func resignNotification() {
@@ -593,7 +593,7 @@ extension UIView {
     
     func screenShot() -> UIImage {
         UIGraphicsBeginImageContext(self.bounds.size)
-        if self.respondsToSelector("drawViewHierarchyInRect:afterScreenUpdates:") {
+        if self.respondsToSelector(#selector(drawViewHierarchyInRect:afterScreenUpdates) {
             //ios7以上
             self.drawViewHierarchyInRect(self.frame, afterScreenUpdates: false)
         } else {
